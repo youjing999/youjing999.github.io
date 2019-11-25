@@ -7,6 +7,8 @@
 <p>数据结构的知识总结于严奶奶的经典书籍、天勤、王道…</p>
 <p>还有一些大佬的理解和自己的理解。</p>
 <p>希望和大家一起学习，一起进步！</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 ]]></content>
       <categories>
         <category>数据结构</category>

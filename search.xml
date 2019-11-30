@@ -14,7 +14,75 @@
         <category>数据结构</category>
       </categories>
       <tags>
+        <tag>分享</tag>
         <tag>导航</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>01_浅析数据之绪论</title>
+    <url>/2019/11/29/01-%E6%B5%85%E6%9E%90%E6%95%B0%E6%8D%AE%E4%B9%8B%E7%BB%AA%E8%AE%BA/</url>
+    <content><![CDATA[<h1 id="浅析数据结构之绪论"><a href="#浅析数据结构之绪论" class="headerlink" title="浅析数据结构之绪论"></a>浅析数据结构之绪论</h1><a id="more"></a>
+
+<h2 id="数据结构和算法"><a href="#数据结构和算法" class="headerlink" title="数据结构和算法"></a><strong>数据结构和算法</strong></h2>]]></content>
+      <categories>
+        <category>数据结构</category>
+      </categories>
+      <tags>
+        <tag>分享</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>02_浅析数据结构-图论之Floyd算法</title>
+    <url>/2019/11/30/02-%E6%B5%85%E6%9E%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%9B%BE%E8%AE%BA%E4%B9%8BFloyd%E7%AE%97%E6%B3%95/</url>
+    <content><![CDATA[<h1 id="浅析数据结构-图论之Floyd算法"><a href="#浅析数据结构-图论之Floyd算法" class="headerlink" title="浅析数据结构-图论之Floyd算法"></a>浅析数据结构-图论之Floyd算法</h1><a id="more"></a>
+<p>定义：</p>
+<p>Floyd算法又称为插点法，是一种利用动态规划的思想寻找给定的加权图中多源点之间最短路径的算法，与Dijkstra算法类似。(定义摘自百度)</p>
+<p>简单来说，这个算法来解决的<strong>任意两点之间的最短路径</strong>，它可以正确地处理向图的最短路径问题或有向图或者负权重（<u>但是可以不存在负权重循环</u>）。</p>
+<p>由于该算法设计到动态规划的一些思想，所以笔者在思考某个问题的时候，并没有联想到到这个算法的本质，当然这是后话了。</p>
+<hr>
+<h3 id="分析问题"><a href="#分析问题" class="headerlink" title="分析问题"></a>分析问题</h3><p>闲话少叙，开始正题。</p>
+<p>给出以下一个有向图(图片来自网络，太难画了)。<br><img src="https://myresou.oss-cn-shanghai.aliyuncs.com/DataStruct/img/arithmetic/Floyd%E7%AE%97%E6%B3%95/%E6%9C%89%E5%90%91%E5%9B%BE%E5%9B%BE%E7%A4%BA.png" alt="Floyd算法图例1" style="zoom:50%;"><br>这时候我们来思考一个问题：在这个有向图中，我想从 <strong>1</strong> 点到达到 <strong>3</strong> 点，有几种方式，几种方式到路程怎么样？</p>
+<ol>
+<li>从 <strong>1</strong> 可以直接到达 <strong>3</strong> 点，距离为6；</li>
+<li>从 <strong>1</strong> 路过 <strong>2</strong> 号点，最后到达 <strong>3</strong> 点，距离是5；</li>
+<li>从 <strong>1</strong> 路过 <strong>4</strong> 号点，最后到达 <strong>3</strong> 点，距离是16；</li>
+<li>其他有关于多走几次回路的方式，就不再赘述。</li>
+</ol>
+<hr>
+<p> 经过上面的分析，我们发现从 <strong>1</strong> 号点到达 <strong>3</strong> 号点，以经过 <strong>2</strong> 号点点方式距离最短。这时候我们来回顾摘自百度的有关Floyd算法的定义：<strong><em>Floyd算法又称为插点法</em></strong>，这个 <strong>2</strong> 号点就是定义所说点有关<strong>插点</strong>的解释了。也就是说，我们在路过其他点到达目的地的时候，往往会有奇效。</p>
+<p> 这时候问题来了，从 <strong>1</strong> 号点到达 <strong>3</strong> 号点我们可以通过观察，轻易的写出老，那么所有的点到所有到点呢？这个案例扩充到N个点呢？很明显。仅通过肉眼观察是很难做到的。这时候必须通过计算机来解决此问题。</p>
+<h3 id="我们继续分析这个问题，通过特例完成通解。"><a href="#我们继续分析这个问题，通过特例完成通解。" class="headerlink" title="我们继续分析这个问题，通过特例完成通解。"></a>我们继续分析这个问题，通过特例完成通解。</h3><p> 我们来想一想，如果要让任意两点（例如从顶点a点到顶点b）之间的距离变短，只能引入第三个点（顶点k），并通过这个顶点k中转即a-&gt;k-&gt;b，才可能缩短原来从顶点a点到顶点b的距离。那么这个中转的顶点k是1~n中的哪个点呢？甚至有时候不只通过一个点，而是经过两个点或者更多点中转会更短，即a-&gt;k1-&gt;k2b-&gt;或者a-&gt;k1-&gt;k2…-&gt;k-&gt;i…-&gt;b。</p>
+<p> 分析有向图，必不可少的工具，就是 <strong>邻接矩阵</strong> ，我们来画出上述有向图的邻接矩阵。<br> <img src="https://myresou.oss-cn-shanghai.aliyuncs.com/DataStruct/img/arithmetic/Floyd%E7%AE%97%E6%B3%95/%E6%9C%89%E5%90%91%E5%9B%BE%E9%82%BB%E6%8E%A5%E7%9F%A9%E9%98%B5.png" alt="有向图的邻接矩阵" style="zoom:50%;"><br>有向图，任意点到任意点本身到距离是0，没有直接通路的情况下，把距离记作 <strong>∞</strong> 。</p>
+<h2 id="逐渐深入问题"><a href="#逐渐深入问题" class="headerlink" title="逐渐深入问题"></a>逐渐深入问题</h2><p>假定，我们只能路过 <strong>1</strong> 号点来作为中转点，这时候我们来求一下，各个点到各个点的最短距离。也就是说，如果两点之间直接距离与经过 <strong>1</strong> 号点点距离做比价，找出最短点距离；如果没有直接通路，则能通过 <strong>1</strong> 点能连通，那便是此条路为最短路径。</p>
+<p>那我们应该如何求呢？我们把 <strong>i</strong> 点到 <strong>j</strong> 的距离记作e[<strong>i</strong>] [<strong>j</strong>]。只需判断e[<strong>i</strong>] [<strong>1</strong>] + e[<strong>1</strong>] [<strong>j</strong>]是否比e[<strong>i</strong>] [<strong>j</strong>]要小即可。e[<strong>i</strong>] [<strong>1</strong>]+e[<strong>1</strong>] [<strong>j</strong>]表示的是从 <strong>i</strong> 号顶点先到 <strong>1</strong> 号顶点，再从 <strong>1</strong> 号顶点到 <strong>j</strong> 号顶点的路程之和。其中 <strong>i</strong> 是<strong>1</strong>–<strong>n</strong>循环，<strong>j</strong> 也是<strong>1</strong>–<strong>n</strong>循环，代码实现如下：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">	<span class="keyword">for</span> (j = <span class="number">1</span>; j &lt;= n; j++)&#123;</span><br><span class="line">		<span class="keyword">if</span> (e[i][j] &gt; e[i][<span class="number">1</span>] + e[<span class="number">1</span>][j])</span><br><span class="line">			e[i][j] = e[i][<span class="number">1</span>] + e[<span class="number">1</span>][j];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在只允许经过1号顶点的情况下，任意两点之间的最短路程更新为：<br><img src="
+https://myresou.oss-cn-shanghai.aliyuncs.com/DataStruct/img/arithmetic/Floyd%E7%AE%97%E6%B3%95/%E5%8F%AA%E7%BB%8F%E8%BF%871%E7%82%B9%E7%9A%84%E7%9F%A9%E9%98%B5.png" alt="只经过1点后距离更新后" style="zoom:50%;"><br><strong>我们继续思考问题：</strong>如果规定，只允许经过 <strong>1</strong> 号点和 <strong>2</strong> 号点，这时候各个点相互之间点距离怎么样又是怎么样的呢！？代码如下图所示：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">	<span class="keyword">for</span> (j = <span class="number">1</span>; j &lt;= n; j++)&#123;</span><br><span class="line">		<span class="keyword">for</span> (k = <span class="number">1</span>; k &lt;= <span class="number">2</span>; k++)&#123;</span><br><span class="line">			<span class="keyword">if</span> (e[i][j] &gt; e[i][k] + e[k][j])</span><br><span class="line">				e[i][j] = e[i][k] + e[k][j];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我们来看一下计算的结果：</p>
+<p><img src="
+https://myresou.oss-cn-shanghai.aliyuncs.com/DataStruct/img/arithmetic/Floyd%E7%AE%97%E6%B3%95/%E7%BB%8F%E8%BF%871%E5%92%8C2%E7%82%B9%E7%9F%A9%E9%98%B5.png" alt="只经过1号点和2号点" style="zoom:50%;"><br>在相比只允许通过1号顶点进行中转的情况下，这里允许通过1和2号顶点进行中转，使得e[<strong>1</strong>] [<strong>3</strong>]和e[<strong>4</strong>] [<strong>3</strong>]的路程变得更短了。</p>
+<hr>
+<p>这时候不难发现，当要求只允许经过经过 <strong>1</strong> – <strong>n</strong> 的时候，我们的算法可以这样书写：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">	<span class="keyword">for</span> (j = <span class="number">1</span>; j &lt;= n; j++)&#123;</span><br><span class="line">		<span class="keyword">for</span> (k = <span class="number">1</span>; k &lt;= n; k++)&#123;</span><br><span class="line">			<span class="keyword">if</span> (e[i][j] &gt; e[i][k] + e[k][j])</span><br><span class="line">				e[i][j] = e[i][k] + e[k][j];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然而，这样并不能解决实际问题，如果 <strong>1</strong> 到 <strong>2</strong> 点经过两个点的时候比只经过一个点距离更小时，不就是不满足最短路径的需求了吗？<br>不着急，这时候<u>算法还是五步，三层for循环</u>，我们只需要这样做：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (k = <span class="number">1</span>; k &lt;= n; k++)&#123;</span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">		<span class="keyword">for</span> (j = <span class="number">1</span>; j &lt;= n; j++)&#123;</span><br><span class="line">			<span class="keyword">if</span> (e[i][j] &gt; e[i][k] + e[k][j])</span><br><span class="line">				e[i][j] = e[i][k] + e[k][j];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>至此，算法的核心代码已经说完了，现在有一个小小的问题：请问无穷大在代码里怎么表示呢？应该会有人说，不就是 int MAX = 99999999;吗？其实int型的无穷大，我们可以经常这么表示 int MAX = 0x3f3f3f; 至于为什么，就留给读者自行思考了，笔者就不再赘述了。</p>
+<p><strong>注意</strong> ：不是所有的有向图都是正权边的，Floyd不适合带有 <strong>负权回路</strong> 的有向图，这样是没有最短路径的。</p>
+<hr>
+<h2 id="再深入思考"><a href="#再深入思考" class="headerlink" title="再深入思考"></a>再深入思考</h2><p>下面再看一个题目：<br><img src="https://myresou.oss-cn-shanghai.aliyuncs.com/DataStruct/img/arithmetic/Floyd%E7%AE%97%E6%B3%95/%E9%A2%98%E7%9B%AE.jpeg" alt="题示"><br>这一题，便可套用Floyd算法，虽然不是直接求得题目得解，使用此算法算是一种曲线救国的解法。读者可以自己动手试试。</p>
+<p><a href="https://blog.csdn.net/jwsl999/article/details/103319713" target="_blank" rel="noopener">想评论？想留言？博客没有安装评论插件，那欢迎在我的CSDN博客中留言</a></p>
+]]></content>
+      <categories>
+        <category>数据结构</category>
+        <category>图论</category>
+        <category>算法</category>
+      </categories>
+      <tags>
         <tag>分享</tag>
       </tags>
   </entry>

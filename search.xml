@@ -14,8 +14,7 @@
         <category>数据结构</category>
       </categories>
       <tags>
-        <tag>导航</tag>
-        <tag>分享</tag>
+        <tag>数据结构</tag>
       </tags>
   </entry>
   <entry>
@@ -28,7 +27,7 @@
         <category>数据结构</category>
       </categories>
       <tags>
-        <tag>分享</tag>
+        <tag>数据结构</tag>
       </tags>
   </entry>
   <entry>
@@ -49,7 +48,7 @@
 <li>其他有关于多走几次回路的方式，就不再赘述。</li>
 </ol>
 <hr>
-<p> 经过上面的分析，我们发现从 <strong>1</strong> 号点到达 <strong>3</strong> 号点，以经过 <strong>2</strong> 号点点方式距离最短。这时候我们来回顾摘自百度的有关Floyd算法的定义：<strong><em>Floyd算法又称为插点法</em></strong>，这个 <strong>2</strong> 号点就是定义所说点有关<strong>插点</strong>的解释了。也就是说，我们在路过其他点到达目的地的时候，往往会有奇效。</p>
+<p> 经过上面的分析，我们发现从 <strong>1</strong> 号点到达 <strong>3</strong> 号点，以经过 <strong>2</strong> 号点的方式距离最短。这时候我们来回顾摘自百度的有关Floyd算法的定义：<strong><em>Floyd算法又称为插点法</em></strong>，这个 <strong>2</strong> 号点就是定义所说点有关<strong>插点</strong>的解释了。也就是说，我们在路过其他点到达目的地的时候，往往会有奇效。</p>
 <p> 这时候问题来了，从 <strong>1</strong> 号点到达 <strong>3</strong> 号点我们可以通过观察，轻易的写出老，那么所有的点到所有到点呢？这个案例扩充到N个点呢？很明显。仅通过肉眼观察是很难做到的。这时候必须通过计算机来解决此问题。</p>
 <h3 id="我们继续分析这个问题，通过特例完成通解。"><a href="#我们继续分析这个问题，通过特例完成通解。" class="headerlink" title="我们继续分析这个问题，通过特例完成通解。"></a>我们继续分析这个问题，通过特例完成通解。</h3><p> 我们来想一想，如果要让任意两点（例如从顶点a点到顶点b）之间的距离变短，只能引入第三个点（顶点k），并通过这个顶点k中转即a-&gt;k-&gt;b，才可能缩短原来从顶点a点到顶点b的距离。那么这个中转的顶点k是1~n中的哪个点呢？甚至有时候不只通过一个点，而是经过两个点或者更多点中转会更短，即a-&gt;k1-&gt;k2b-&gt;或者a-&gt;k1-&gt;k2…-&gt;k-&gt;i…-&gt;b。</p>
 <p> 分析有向图，必不可少的工具，就是 <strong>邻接矩阵</strong> ，我们来画出上述有向图的邻接矩阵。<br> <img src="https://myresou.oss-cn-shanghai.aliyuncs.com/DataStruct/img/arithmetic/Floyd%E7%AE%97%E6%B3%95/%E6%9C%89%E5%90%91%E5%9B%BE%E9%82%BB%E6%8E%A5%E7%9F%A9%E9%98%B5.png" alt="有向图的邻接矩阵" style="zoom:50%;"><br>有向图，任意点到任意点本身到距离是0，没有直接通路的情况下，把距离记作 <strong>∞</strong> 。</p>
@@ -83,7 +82,9 @@ https://myresou.oss-cn-shanghai.aliyuncs.com/DataStruct/img/arithmetic/Floyd%E7%
         <category>算法</category>
       </categories>
       <tags>
-        <tag>分享</tag>
+        <tag>数据结构</tag>
+        <tag>图论</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
 </search>

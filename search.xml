@@ -129,7 +129,7 @@
 <li>3.难易程度，即是否容易被人理解。</li>
 <li>4.健壮性，即是否容易崩溃  </li>
 </ul>
-<p>复杂度：    O(1)&lt;O(㏒n)&lt;O(n)&lt;O(n㏒n)&lt;O(n^2)&lt;O(n^3)​</p>
+<p>复杂度：    O(1)&lt;O(㏒n)&lt;O(n)&lt;O(n㏒n)&lt;O(n²)&lt;O(n³)&lt;O(2ⁿ)&lt;O(n!)&lt;O(nⁿ)</p>
 ]]></content>
       <categories>
         <category>数据结构</category>

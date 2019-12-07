@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/BloggerSite_32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/BloggerSite_16x16.png">
+  <link rel="mask-icon" href="/images/BloggerSitet.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-mac-osx.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://yoursite.com').hostname,
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":"mac"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="浅析数据结构-线性结构之线性表">
+<meta name="keywords" content="数据结构,线性结构,线性表">
+<meta property="og:type" content="article">
+<meta property="og:title" content="04-浅析数据结构-线性结构之线性表">
+<meta property="og:url" content="http://yoursite.com/2019/12/07/04-浅析数据结构-线性结构之线性表/index.html">
+<meta property="og:site_name" content="Mark随笔">
+<meta property="og:description" content="浅析数据结构-线性结构之线性表">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-12-07T11:16:54.671Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="04-浅析数据结构-线性结构之线性表">
+<meta name="twitter:description" content="浅析数据结构-线性结构之线性表">
+
+<link rel="canonical" href="http://yoursite.com/2019/12/07/04-浅析数据结构-线性结构之线性表/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>04-浅析数据结构-线性结构之线性表 | Mark随笔</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mark随笔</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/07/04-浅析数据结构-线性结构之线性表/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/article.jpg">
+      <meta itemprop="name" content="右京先生">
+      <meta itemprop="description" content="有关于美好事物...">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mark随笔">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          04-浅析数据结构-线性结构之线性表
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2019-12-07 15:17:14 / 修改时间：19:16:54" itemprop="dateCreated datePublished" datetime="2019-12-07T15:17:14+08:00">2019-12-07</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据结构/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构</span>
+                  </a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据结构/线性结构/" itemprop="url" rel="index">
+                    <span itemprop="name">线性结构</span>
+                  </a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据结构/线性结构/线性表/" itemprop="url" rel="index">
+                    <span itemprop="name">线性表</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="浅析数据结构-线性结构之线性表"><a href="#浅析数据结构-线性结构之线性表" class="headerlink" title="浅析数据结构-线性结构之线性表"></a>浅析数据结构-线性结构之线性表</h1><a id="more"></a>
+
+<h3 id="线性结构的特点："><a href="#线性结构的特点：" class="headerlink" title="线性结构的特点："></a><strong>线性结构的特点：</strong></h3><ul>
+<li>① 存在一个唯一的被称为“第一个”的数据元素；</li>
+<li>② 存在一个唯一的被称为“最后一个”的数据元素；</li>
+<li>③ 除第一个元素外，每个元素均有唯一一个直接前驱；</li>
+<li>④ 除最后一个元素外，每个元素均有唯一一个直接后继。</li>
+</ul>
+<p><strong>线性表：</strong>是由n(n≧0)个数据元素(结点)a1，a2， …an组成的有限序列。该序列中的所有结点具有相同的数据类型。其中数据元素的个数n称为线性表的长度。<br>当n=0时，称为空表。<br>当n&gt;0时，将非空的线性表记作： (a1，a2，…an)<br>a1称为线性表的第一个(首)结点，an称为线性表的最后一个(尾)结点。<br>a1，a2，…ai-1都是ai(2≦i≦n)的前驱，其中ai-1是ai的直接前驱;<br>ai+1，ai+2，…an都是ai(1≦i ≦n-1)的后继，其中ai+1是ai的直接后继。</p>
+<p><strong>注：</strong>一个数据元素可以由若干个<u>数据项</u>组成。在这情况下，常把数据元素称为<u>记录</u>，含有大量记录的线性表称为<u>文件</u>。</p>
+<h2 id="线性表的表示与实现"><a href="#线性表的表示与实现" class="headerlink" title="线性表的表示与实现"></a>线性表的表示与实现</h2><ul>
+<li><strong>a.顺序存储[数组]</strong></li>
+</ul>
+<p><strong>顺序存储 ：</strong>[<strong>数组</strong>]把线性表的结点按逻辑顺序依次存放在一组地址连续的存储单元里。用这种方法存储的线性表简称顺序表。</p>
+<ul>
+<li><strong>①什么是数组？</strong><br>元素类型相同，大小相等。</li>
+<li><strong>②数组的优缺点：</strong><ul>
+<li>优点：<br>1、按照索引查询元素速度快<br>2、能存储大量数据<br>3、按照索引遍历数组方便</li>
+<li>缺点：<br>1、根据内容查找元素速度慢<br>2、数组的大小一经确定不能改变。<br>3、数组只能存储一种类型的数据<br>4、增加、删除元素效率慢<br>5、未封装任何方法，所有操作都需要用户自己定义。</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">CreatList(SqList &amp;L,int n) 参数：顺序表L，顺序表长度n 功能：创建长度为的顺序表 时间复杂度：O(n)</span></span><br><span class="line"><span class="comment">InitList(SqList &amp;L) 参数：顺序表L 功能：初始化 时间复杂度:O(1)</span></span><br><span class="line"><span class="comment">InsertList(SqList &amp;L,int i,ElemType e) 参数:顺序表L,位置i,元素e 功能：位置i处插入元素e 时间复杂度:O(n)</span></span><br><span class="line"><span class="comment">ListDelete(SqList &amp;L,int i) 参数:顺序表L,位置i 功能：删除位置i处元素 时间复杂度:O(n)</span></span><br><span class="line"><span class="comment">LocateElem(SqList L,ElemType e) 参数:顺序表L,元素e 功能：返回第一个等于e的元素的位置 时间复杂度:O(n)</span></span><br><span class="line"><span class="comment">PrintList(SqList L) 参数:顺序表L 功能：遍历L，并输出</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MaxSize 100</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ElemType int</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Status int</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="comment">//顺序表数据结构</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	ElemType data[MaxSize];<span class="comment">//顺序表元素</span></span><br><span class="line">	<span class="keyword">int</span> length;            <span class="comment">//顺序表当前长度</span></span><br><span class="line">&#125;SqList;</span><br><span class="line"><span class="comment">//***************************基本操作函数*******************************//</span></span><br><span class="line"><span class="comment">//初始化顺序表函数，构造一个空的顺序表 </span></span><br><span class="line"><span class="function">Status <span class="title">InitList</span><span class="params">(SqList &amp;L)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">memset</span>(L.data, <span class="number">0</span>, <span class="keyword">sizeof</span>(L));<span class="comment">//初始化数据为0</span></span><br><span class="line">	L.length = <span class="number">0</span>;                <span class="comment">//初始化长度为0</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//创建顺序表函数 初始化前n个数据</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">CreatList</span><span class="params">(SqList &amp;L, <span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (n&lt;<span class="number">0</span> || n&gt;MaxSize)<span class="literal">false</span>;<span class="comment">//n非法</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i&lt;n; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> temp;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;L.data[i]);</span><br><span class="line">		L.length++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//插入函数 位置i插入数据 i及之后元素后移  1=&lt;i&lt;=length+1 </span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">InsertList</span><span class="params">(SqList &amp;L, <span class="keyword">int</span> i, ElemType e)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (i&lt;<span class="number">1</span> || i&gt;L.length + <span class="number">1</span>) <span class="comment">//判断位置是否有效</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"位置无效！！！\n"</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (L.length &gt;= MaxSize)<span class="comment">//判断存储空间是否已满</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"当前存储空间已满！！！\n"</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> j = L.length; j &gt;= i; j--)<span class="comment">//位置i及之后元素后移</span></span><br><span class="line">	&#123;</span><br><span class="line">		L.data[j] = L.data[j - <span class="number">1</span>];</span><br><span class="line">	&#125;</span><br><span class="line">	L.data[i - <span class="number">1</span>] = e;</span><br><span class="line">	L.length++;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//删除函数 删除位置i的元素 i之后的元素依次前移</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span>  <span class="title">ListDelete</span><span class="params">(SqList &amp;L, <span class="keyword">int</span> i)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (i&lt;<span class="number">1</span> || i&gt;L.length)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"位置无效！！！\n"</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> j = i; j &lt;= L.length - <span class="number">1</span>; j++)<span class="comment">//位置i之后元素依次前移覆盖</span></span><br><span class="line">	&#123;</span><br><span class="line">		L.data[j - <span class="number">1</span>] = L.data[j];</span><br><span class="line">	&#125;</span><br><span class="line">	L.length--;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//查找函数 按位置从小到大查找第一个值等于e的元素 并返回位置</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">LocateElem</span><span class="params">(SqList L, ElemType e)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i&lt;L.length; i++)<span class="comment">//从低位置查找</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (L.data[i] == e)</span><br><span class="line">			<span class="keyword">return</span> i + <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//倒置函数 将原顺序表直接倒置</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Reverse</span><span class="params">(SqList &amp;L)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (L.length)</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i&lt;L.length - <span class="number">1</span> - i; i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> t = L.data[i];</span><br><span class="line">			L.data[i] = L.data[L.length - <span class="number">1</span> - i];</span><br><span class="line">			L.data[L.length - <span class="number">1</span> - i] = t;</span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//********************************功能函数*****************************************//</span></span><br><span class="line"><span class="comment">//输出功能函数 按位置从小到大输出顺序表所有元素</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PrintList</span><span class="params">(SqList L)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"当前顺序表所有元素:"</span>);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i&lt;L.length; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d "</span>, L.data[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//创建顺序表函数</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Create</span><span class="params">(SqList &amp;L)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n; <span class="keyword">bool</span> flag;</span><br><span class="line">	L.length = <span class="number">0</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请输入要创建的顺序表长度(&gt;1):"</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请输入%d个数（空格隔开）:"</span>, n);</span><br><span class="line">	flag = CreatList(L, n);</span><br><span class="line">	<span class="keyword">if</span> (flag) &#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"创建成功！\n"</span>);</span><br><span class="line">		PrintList(L);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"输入长度非法！\n"</span>);</span><br><span class="line"> </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//插入功能函数 调用InsertList完成顺序表元素插入 调用PrintList函数显示插入成功后的结果</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Insert</span><span class="params">(SqList &amp;L)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> place; ElemType e; <span class="keyword">bool</span> flag;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请输入要插入的位置(从1开始)及元素:\n"</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;place, &amp;e);</span><br><span class="line">	flag = InsertList(L, place, e);</span><br><span class="line">	<span class="keyword">if</span> (flag)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"插入成功！！！\n"</span>);</span><br><span class="line">		PrintList(L);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//删除功能函数 调用ListDelete函数完成顺序表的删除 调用PrintList函数显示插入成功后的结果</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Delete</span><span class="params">(SqList &amp;L)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> place; <span class="keyword">bool</span> flag;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请输入要删除的位置(从1开始):\n"</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;place);</span><br><span class="line">	flag = ListDelete(L, place);</span><br><span class="line">	<span class="keyword">if</span> (flag)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"删除成功！！！\n"</span>);</span><br><span class="line">		PrintList(L);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//查找功能函数 调用LocateElem查找元素</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Search</span><span class="params">(SqList L)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	ElemType e; <span class="keyword">int</span> flag;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请输入要查找的值:\n"</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;e);</span><br><span class="line">	flag = LocateElem(L, e);</span><br><span class="line">	<span class="keyword">if</span> (flag)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"该元素位置为:%d\n"</span>, flag);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"未找到该元素！\n"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//菜单</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">menu</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"********1.创建    2.插入*********\n"</span>);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"********3.删除    4.查找*********\n"</span>);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"********5.倒置    6.输出*********\n"</span>);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"********7.退出    ******************);</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">int main()</span></span><br><span class="line"><span class="string">&#123;</span></span><br><span class="line"><span class="string">	SqList L; int choice;</span></span><br><span class="line"><span class="string">	InitList(L);</span></span><br><span class="line"><span class="string">	while (1)</span></span><br><span class="line"><span class="string">	&#123;</span></span><br><span class="line"><span class="string">		menu();</span></span><br><span class="line"><span class="string">		printf("</span>请输入菜单序号：\n<span class="string">");</span></span><br><span class="line"><span class="string">		scanf("</span>%d<span class="string">", &amp;choice);</span></span><br><span class="line"><span class="string">		if (7 == choice) break;</span></span><br><span class="line"><span class="string">		switch (choice)</span></span><br><span class="line"><span class="string">		&#123;</span></span><br><span class="line"><span class="string">			case 1:Create(L); break;</span></span><br><span class="line"><span class="string">			case 2:Insert(L); break;</span></span><br><span class="line"><span class="string">			case 3:Delete(L); break;</span></span><br><span class="line"><span class="string">			case 4:Search(L); break;</span></span><br><span class="line"><span class="string">			case 5:Reverse(L); break;</span></span><br><span class="line"><span class="string">			case 6:PrintList(L); break;</span></span><br><span class="line"><span class="string">			default:printf("</span>输入错误！！！\n<span class="string">");</span></span><br><span class="line"><span class="string">		&#125;</span></span><br><span class="line"><span class="string">	&#125;</span></span><br><span class="line"><span class="string">	return 0;</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/数据结构/" rel="tag"><i class="fa fa-google"></i> 数据结构</a>
+              <a href="/tags/线性结构/" rel="tag"><i class="fa fa-google"></i> 线性结构</a>
+              <a href="/tags/线性表/" rel="tag"><i class="fa fa-google"></i> 线性表</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/12/04/03-浅析数据结构之预备知识/" rel="prev" title="03-浅析数据结构之预备知识">
+      <i class="fa fa-chevron-left"></i> 03-浅析数据结构之预备知识
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/12/07/05-浅析数据结构-线性结构之线性表-链表/" rel="next" title="05-浅析数据结构-线性结构之线性表_链表">
+      05-浅析数据结构-线性结构之线性表_链表 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#浅析数据结构-线性结构之线性表"><span class="nav-number">1.</span> <span class="nav-text">浅析数据结构-线性结构之线性表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#线性结构的特点："><span class="nav-number">1.0.1.</span> <span class="nav-text">线性结构的特点：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线性表的表示与实现"><span class="nav-number">1.1.</span> <span class="nav-text">线性表的表示与实现</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="右京先生"
+      src="/images/article.jpg">
+  <p class="site-author-name" itemprop="name">右京先生</p>
+  <div class="site-description" itemprop="description">有关于美好事物...</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/youjing999" title="GitHub → https://github.com/youjing999" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/jwsl999" title="CSDN → https://blog.csdn.net/jwsl999" rel="noopener" target="_blank"><i class="fa fa-fw fa-csdn"></i>CSDN</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="http://www.xilikeli.cn" title="http://www.xilikeli.cn" rel="noopener" target="_blank">大佬的数据结构</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://smile62.github.io/" title="https://smile62.github.io/" rel="noopener" target="_blank">微笑大佬个人博客</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://www.fxkjnj.com" title="http://www.fxkjnj.com" rel="noopener" target="_blank">全能大佬的个人博客</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://1305936314.github.io/" title="https://1305936314.github.io/" rel="noopener" target="_blank">河海大学大佬博客(深度学习)</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 2019 11.24 – 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">右京先生</span>
+</div>
+
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.5.0
+  </div>-->
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共6k字</span>
+</div>
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  <!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/clicklove.js"></script>
+</body>
+</html>

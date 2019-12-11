@@ -324,6 +324,8 @@ https://myresou.oss-cn-shanghai.aliyuncs.com/DataStruct/img/arithmetic/Floyd%E7%
 <p><strong>a.</strong> r = p-&gt;pNext;p-&gt;pNext = q;q-&gt;qNext = r;<br><strong>b.</strong> q-&gt;pNext = p-&gt;pNext;p-&gt;pNext = q;</p>
 <h3 id="删除结点："><a href="#删除结点：" class="headerlink" title="删除结点："></a>删除结点：</h3><p><img src="https://myresou.oss-cn-shanghai.aliyuncs.com/DataStruct/img/%E9%93%BE%E8%A1%A8/%E5%88%A0%E9%99%A4%E7%BB%93%E7%82%B9.png" alt="删除结点"></p>
 <p>直接写：p-&gt;pNext = p-&gt;pNext-&gt;pNext;是错误的，会造成内存泄漏。<br>r = p-&gt;pNext;p-&gt;pNext = p-&gt;pNext-&gt;pNext;free(r);</p>
+<h3 id="链表的头插法："><a href="#链表的头插法：" class="headerlink" title="链表的头插法："></a>链表的头插法：</h3><p>链表的头插法简单来说，就是每一个新结点都插入在最前端，即头结点之后。<br><img src="https://myresou.oss-cn-shanghai.aliyuncs.com/DataStruct/img/%E9%93%BE%E8%A1%A8/%E9%93%BE%E8%A1%A8%E5%A4%B4%E6%8F%92%E6%B3%95.png" alt="链表头插法"></p>
+<h3 id="链表的尾插法："><a href="#链表的尾插法：" class="headerlink" title="链表的尾插法："></a>链表的尾插法：</h3><p>链表的尾插法，新结点每次都插入在最后一个。<br><img src="https://myresou.oss-cn-shanghai.aliyuncs.com/DataStruct/img/%E9%93%BE%E8%A1%A8/%E9%93%BE%E8%A1%A8%E5%B0%BE%E6%8F%92%E6%B3%95.png" alt="链表尾插法"></p>
 ]]></content>
       <categories>
         <category>数据结构</category>
@@ -334,6 +336,37 @@ https://myresou.oss-cn-shanghai.aliyuncs.com/DataStruct/img/arithmetic/Floyd%E7%
         <tag>数据结构</tag>
         <tag>线性结构</tag>
         <tag>线性表</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>#LeetCode_01_26删除排序数组中的重复项</title>
+    <url>/2019/12/11/LeetCode-01-26%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9/</url>
+    <content><![CDATA[<h1 id="LeetCode-26删除排序数组中的重复项"><a href="#LeetCode-26删除排序数组中的重复项" class="headerlink" title="LeetCode_26删除排序数组中的重复项"></a>LeetCode_26删除排序数组中的重复项</h1><a id="more"></a>
+
+<p>给定一个排序数组，你需要在原地删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。</p>
+<p>不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。</p>
+<p><strong>示例 1:</strong><br>给定数组 nums = [1,1,2],<br>函数应该返回新的长度 2, 并且原数组 nums 的前两个元素被修改为 1, 2。<br>你不需要考虑数组中超出新长度后面的元素。</p>
+<p><strong>示例 2:</strong><br>给定 nums = [0,0,1,1,1,2,2,3,3,4],<br>函数应该返回新的长度 5, 并且原数组 nums 的前五个元素被修改为 0, 1, 2, 3, 4。<br>你不需要考虑数组中超出新长度后面的元素。</p>
+<p><strong>说明:</strong><br>为什么返回数值是整数，但输出的答案是数组呢?<br><strong><em>请注意，输入数组是以“引用”方式传递的，这意味着在函数里修改输入数组对于调用者是可见的。</em></strong></p>
+<p>你可以想象内部操作如下:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// nums 是以“引用”方式传递的。也就是说，不对实参做任何拷贝</span><br><span class="line">int len = removeDuplicates(nums);</span><br><span class="line"></span><br><span class="line">// 在函数里修改输入数组对于调用者是可见的。</span><br><span class="line">// 根据你的函数返回的长度, 它会打印出数组中该长度范围内的所有元素。</span><br><span class="line">for (int i = 0; i &lt; len; i++) &#123;</span><br><span class="line">    print(nums[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>这道题是一道简单题，先读明白题目，理清题意。</p>
+<p>由于数组是已经排序好的，那么重复的元素比相邻。<br>删除重复的元素，就是把下一个不重复的元素，覆盖到重复元素的后面，这也就是题目 <strong><em>你不需要考虑数组中超出新长度后面的元素。</em></strong>  简言之，只要返回有效的计数个数就行。</p>
+<p>这题采用双指针算法，慢指针指向需要填充的位置，快指针快速遍历数组。<strong>注意</strong>，最后只需要快指针遍历到数组最后一个元素，并判断完就可以。</p>
+<h3 id="图示以及代码："><a href="#图示以及代码：" class="headerlink" title="图示以及代码："></a>图示以及代码：</h3><img src="https://myresou.oss-cn-shanghai.aliyuncs.com/LeetCode/26%E5%88%A0%E9%99%A4%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9/%E6%88%AA%E5%B1%8F2019-12-1123.10.22.png" alt="图解" style="zoom:50%;">
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">removeDuplicates</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//数组长度</span></span><br><span class="line">        <span class="keyword">int</span> len = nums.length;</span><br><span class="line">        数组只有一个元素，则符合题目要求，直接返回。</span><br><span class="line">        <span class="keyword">if</span>(len == <span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="comment">//慢指针从0开始</span></span><br><span class="line">        <span class="keyword">int</span> slow = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">//快指针从1开始</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> fast = <span class="number">1</span>;fast &lt; len;++fast) &#123;</span><br><span class="line">            <span class="comment">//如果遇到下一个不重复的</span></span><br><span class="line">            <span class="keyword">if</span>(nums[fast] != nums[slow]) &#123;</span><br><span class="line">                <span class="comment">//则直接放在慢指针后面的元素，慢指针后移</span></span><br><span class="line">                nums[++slow] = nums[fast];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//慢指针加1，就是新数组符合的元素的个数</span></span><br><span class="line">        <span class="keyword">return</span> slow + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>双指针</category>
+      </categories>
+      <tags>
+        <tag>LeetCode</tag>
+        <tag>双指针</tag>
       </tags>
   </entry>
 </search>

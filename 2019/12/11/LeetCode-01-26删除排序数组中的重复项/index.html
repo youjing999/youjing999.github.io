@@ -48,26 +48,22 @@
   };
 </script>
 
-  <meta name="description" content="浅析数据结构-线性结构之线性表-链表">
-<meta name="keywords" content="数据结构,线性结构,线性表">
+  <meta name="description" content="LeetCode_26删除排序数组中的重复项">
+<meta name="keywords" content="LeetCode,双指针">
 <meta property="og:type" content="article">
-<meta property="og:title" content="05-浅析数据结构-线性结构之线性表_链表">
-<meta property="og:url" content="http://yoursite.com/2019/12/07/05-浅析数据结构-线性结构之线性表-链表/index.html">
+<meta property="og:title" content="#LeetCode_01_26删除排序数组中的重复项">
+<meta property="og:url" content="http://yoursite.com/2019/12/11/LeetCode-01-26删除排序数组中的重复项/index.html">
 <meta property="og:site_name" content="Mark随笔">
-<meta property="og:description" content="浅析数据结构-线性结构之线性表-链表">
+<meta property="og:description" content="LeetCode_26删除排序数组中的重复项">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://myresou.oss-cn-shanghai.aliyuncs.com/DataStruct/img/%E9%93%BE%E8%A1%A8/%E4%B8%93%E4%B8%9A%E6%9C%AF%E8%AF%AD.png">
-<meta property="og:image" content="https://myresou.oss-cn-shanghai.aliyuncs.com/DataStruct/img/%E9%93%BE%E8%A1%A8/%E6%8F%92%E5%85%A5%E7%BB%93%E7%82%B9.png">
-<meta property="og:image" content="https://myresou.oss-cn-shanghai.aliyuncs.com/DataStruct/img/%E9%93%BE%E8%A1%A8/%E5%88%A0%E9%99%A4%E7%BB%93%E7%82%B9.png">
-<meta property="og:image" content="https://myresou.oss-cn-shanghai.aliyuncs.com/DataStruct/img/%E9%93%BE%E8%A1%A8/%E9%93%BE%E8%A1%A8%E5%A4%B4%E6%8F%92%E6%B3%95.png">
-<meta property="og:image" content="https://myresou.oss-cn-shanghai.aliyuncs.com/DataStruct/img/%E9%93%BE%E8%A1%A8/%E9%93%BE%E8%A1%A8%E5%B0%BE%E6%8F%92%E6%B3%95.png">
-<meta property="og:updated_time" content="2019-12-10T06:48:08.819Z">
+<meta property="og:image" content="https://myresou.oss-cn-shanghai.aliyuncs.com/LeetCode/26%E5%88%A0%E9%99%A4%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9/%E6%88%AA%E5%B1%8F2019-12-1123.10.22.png">
+<meta property="og:updated_time" content="2019-12-11T15:15:18.733Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="05-浅析数据结构-线性结构之线性表_链表">
-<meta name="twitter:description" content="浅析数据结构-线性结构之线性表-链表">
-<meta name="twitter:image" content="https://myresou.oss-cn-shanghai.aliyuncs.com/DataStruct/img/%E9%93%BE%E8%A1%A8/%E4%B8%93%E4%B8%9A%E6%9C%AF%E8%AF%AD.png">
+<meta name="twitter:title" content="#LeetCode_01_26删除排序数组中的重复项">
+<meta name="twitter:description" content="LeetCode_26删除排序数组中的重复项">
+<meta name="twitter:image" content="https://myresou.oss-cn-shanghai.aliyuncs.com/LeetCode/26%E5%88%A0%E9%99%A4%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9/%E6%88%AA%E5%B1%8F2019-12-1123.10.22.png">
 
-<link rel="canonical" href="http://yoursite.com/2019/12/07/05-浅析数据结构-线性结构之线性表-链表/">
+<link rel="canonical" href="http://yoursite.com/2019/12/11/LeetCode-01-26删除排序数组中的重复项/">
 
 
 <script id="page-configurations">
@@ -81,7 +77,7 @@
   };
 </script>
 
-  <title>05-浅析数据结构-线性结构之线性表_链表 | Mark随笔</title>
+  <title>#LeetCode_01_26删除排序数组中的重复项 | Mark随笔</title>
   
 
 
@@ -216,7 +212,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/07/05-浅析数据结构-线性结构之线性表-链表/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/11/LeetCode-01-26删除排序数组中的重复项/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/article.jpg">
@@ -229,7 +225,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          05-浅析数据结构-线性结构之线性表_链表
+          #LeetCode_01_26删除排序数组中的重复项
         </h1>
 
         <div class="post-meta">
@@ -238,36 +234,24 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2019-12-07 16:54:20" itemprop="dateCreated datePublished" datetime="2019-12-07T16:54:20+08:00">2019-12-07</time>
+              <time title="创建时间：2019-12-11 22:22:05 / 修改时间：23:15:18" itemprop="dateCreated datePublished" datetime="2019-12-11T22:22:05+08:00">2019-12-11</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-12-10 14:48:08" itemprop="dateModified" datetime="2019-12-10T14:48:08+08:00">2019-12-10</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据结构/" itemprop="url" rel="index">
-                    <span itemprop="name">数据结构</span>
+                  <a href="/categories/LeetCode/" itemprop="url" rel="index">
+                    <span itemprop="name">LeetCode</span>
                   </a>
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据结构/线性结构/" itemprop="url" rel="index">
-                    <span itemprop="name">线性结构</span>
-                  </a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据结构/线性结构/线性表/" itemprop="url" rel="index">
-                    <span itemprop="name">线性表</span>
+                  <a href="/categories/LeetCode/双指针/" itemprop="url" rel="index">
+                    <span itemprop="name">双指针</span>
                   </a>
                 </span>
             </span>
@@ -290,49 +274,24 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="浅析数据结构-线性结构之线性表-链表"><a href="#浅析数据结构-线性结构之线性表-链表" class="headerlink" title="浅析数据结构-线性结构之线性表-链表"></a>浅析数据结构-线性结构之线性表-链表</h1><a id="more"></a>
+        <h1 id="LeetCode-26删除排序数组中的重复项"><a href="#LeetCode-26删除排序数组中的重复项" class="headerlink" title="LeetCode_26删除排序数组中的重复项"></a>LeetCode_26删除排序数组中的重复项</h1><a id="more"></a>
 
-<h2 id="b-链式存储-链表"><a href="#b-链式存储-链表" class="headerlink" title="b.链式存储[链表]"></a><strong>b.链式存储[链表]</strong></h2><p><strong>重要性：</strong>学习树和图的基础<br><strong>定义：</strong></p>
-<ul>
-<li>1.N个结点离散分配，彼此通过指针相连；</li>
-<li>2.每个结点只有一个前驱结点，每个结点只有一个后续结点；</li>
-<li>3.首结点没有前驱结点，尾结点没有后续结点。</li>
-</ul>
-<p><strong>链表的优缺点：</strong></p>
-<ul>
-<li>优点:<br>1:： 删除 不需移动其他元素, 只需改变指针.<br>2：结点在内存中空间不要求连续!空间利用率高<br>3：内存利用率高</li>
-<li>缺点:<br>1：数组元素效率低,例如:访问第100个元素,必须从头节一直next99次才能找到。</li>
-</ul>
-<p><strong>专业术语：</strong></p>
-<p><img src="https://myresou.oss-cn-shanghai.aliyuncs.com/DataStruct/img/%E9%93%BE%E8%A1%A8/%E4%B8%93%E4%B8%9A%E6%9C%AF%E8%AF%AD.png" alt="专业术语"></p>
-<p><strong>首结点：</strong>第一个有效结点<br><strong>尾结点：</strong>最后一个有效结点<br><strong>头结点：</strong></p>
-<ul>
-<li>头结点数据类型和首结点类型一样</li>
-<li>第一个有效结点之前的结点</li>
-<li>头结点并不存放数据</li>
-</ul>
-<p><strong>头指针：</strong>指向头结点的指针变量<br><strong>尾指针：</strong>指向尾结点的指针变量</p>
-<h3 id="为什么需要使用头结点？"><a href="#为什么需要使用头结点？" class="headerlink" title="为什么需要使用头结点？"></a>为什么需要使用头结点？</h3><p>对链表进行操作的时候，在首结点加入一个没有实际含义的头结点，方便操作。</p>
-<h3 id="如果希望通过一个函数对链表进行处理，我们至少需要哪些参数？"><a href="#如果希望通过一个函数对链表进行处理，我们至少需要哪些参数？" class="headerlink" title="如果希望通过一个函数对链表进行处理，我们至少需要哪些参数？"></a>如果希望通过一个函数对链表进行处理，我们至少需要哪些参数？</h3><ul>
-<li>确定链表需要一个参数：头指针</li>
-<li>因为我们通过头指针就可以推算出链表的其他所有参数。</li>
-</ul>
-<h3 id="分类："><a href="#分类：" class="headerlink" title="分类："></a>分类：</h3><ul>
-<li><p>单链表：每一个结点上面有两个指针域</p>
-</li>
-<li><p>双链表：每一个结点上面有两个指针域</p>
-</li>
-<li><p>循环链表：能通过任何一个结点找到其他结点</p>
-</li>
-<li><p>非循环链表</p>
-</li>
-</ul>
-<h3 id="插入结点："><a href="#插入结点：" class="headerlink" title="插入结点："></a>插入结点：</h3><p><img src="https://myresou.oss-cn-shanghai.aliyuncs.com/DataStruct/img/%E9%93%BE%E8%A1%A8/%E6%8F%92%E5%85%A5%E7%BB%93%E7%82%B9.png" alt="插入结点"></p>
-<p><strong>a.</strong> r = p-&gt;pNext;p-&gt;pNext = q;q-&gt;qNext = r;<br><strong>b.</strong> q-&gt;pNext = p-&gt;pNext;p-&gt;pNext = q;</p>
-<h3 id="删除结点："><a href="#删除结点：" class="headerlink" title="删除结点："></a>删除结点：</h3><p><img src="https://myresou.oss-cn-shanghai.aliyuncs.com/DataStruct/img/%E9%93%BE%E8%A1%A8/%E5%88%A0%E9%99%A4%E7%BB%93%E7%82%B9.png" alt="删除结点"></p>
-<p>直接写：p-&gt;pNext = p-&gt;pNext-&gt;pNext;是错误的，会造成内存泄漏。<br>r = p-&gt;pNext;p-&gt;pNext = p-&gt;pNext-&gt;pNext;free(r);</p>
-<h3 id="链表的头插法："><a href="#链表的头插法：" class="headerlink" title="链表的头插法："></a>链表的头插法：</h3><p>链表的头插法简单来说，就是每一个新结点都插入在最前端，即头结点之后。<br><img src="https://myresou.oss-cn-shanghai.aliyuncs.com/DataStruct/img/%E9%93%BE%E8%A1%A8/%E9%93%BE%E8%A1%A8%E5%A4%B4%E6%8F%92%E6%B3%95.png" alt="链表头插法"></p>
-<h3 id="链表的尾插法："><a href="#链表的尾插法：" class="headerlink" title="链表的尾插法："></a>链表的尾插法：</h3><p>链表的尾插法，新结点每次都插入在最后一个。<br><img src="https://myresou.oss-cn-shanghai.aliyuncs.com/DataStruct/img/%E9%93%BE%E8%A1%A8/%E9%93%BE%E8%A1%A8%E5%B0%BE%E6%8F%92%E6%B3%95.png" alt="链表尾插法"></p>
+<p>给定一个排序数组，你需要在原地删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。</p>
+<p>不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。</p>
+<p><strong>示例 1:</strong><br>给定数组 nums = [1,1,2],<br>函数应该返回新的长度 2, 并且原数组 nums 的前两个元素被修改为 1, 2。<br>你不需要考虑数组中超出新长度后面的元素。</p>
+<p><strong>示例 2:</strong><br>给定 nums = [0,0,1,1,1,2,2,3,3,4],<br>函数应该返回新的长度 5, 并且原数组 nums 的前五个元素被修改为 0, 1, 2, 3, 4。<br>你不需要考虑数组中超出新长度后面的元素。</p>
+<p><strong>说明:</strong><br>为什么返回数值是整数，但输出的答案是数组呢?<br><strong><em>请注意，输入数组是以“引用”方式传递的，这意味着在函数里修改输入数组对于调用者是可见的。</em></strong></p>
+<p>你可以想象内部操作如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// nums 是以“引用”方式传递的。也就是说，不对实参做任何拷贝</span><br><span class="line">int len = removeDuplicates(nums);</span><br><span class="line"></span><br><span class="line">// 在函数里修改输入数组对于调用者是可见的。</span><br><span class="line">// 根据你的函数返回的长度, 它会打印出数组中该长度范围内的所有元素。</span><br><span class="line">for (int i = 0; i &lt; len; i++) &#123;</span><br><span class="line">    print(nums[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>这道题是一道简单题，先读明白题目，理清题意。</p>
+<p>由于数组是已经排序好的，那么重复的元素比相邻。<br>删除重复的元素，就是把下一个不重复的元素，覆盖到重复元素的后面，这也就是题目 <strong><em>你不需要考虑数组中超出新长度后面的元素。</em></strong>  简言之，只要返回有效的计数个数就行。</p>
+<p>这题采用双指针算法，慢指针指向需要填充的位置，快指针快速遍历数组。<strong>注意</strong>，最后只需要快指针遍历到数组最后一个元素，并判断完就可以。</p>
+<h3 id="图示以及代码："><a href="#图示以及代码：" class="headerlink" title="图示以及代码："></a>图示以及代码：</h3><img src="https://myresou.oss-cn-shanghai.aliyuncs.com/LeetCode/26%E5%88%A0%E9%99%A4%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9/%E6%88%AA%E5%B1%8F2019-12-1123.10.22.png" alt="图解" style="zoom:50%;">
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">removeDuplicates</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//数组长度</span></span><br><span class="line">        <span class="keyword">int</span> len = nums.length;</span><br><span class="line">        数组只有一个元素，则符合题目要求，直接返回。</span><br><span class="line">        <span class="keyword">if</span>(len == <span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="comment">//慢指针从0开始</span></span><br><span class="line">        <span class="keyword">int</span> slow = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">//快指针从1开始</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> fast = <span class="number">1</span>;fast &lt; len;++fast) &#123;</span><br><span class="line">            <span class="comment">//如果遇到下一个不重复的</span></span><br><span class="line">            <span class="keyword">if</span>(nums[fast] != nums[slow]) &#123;</span><br><span class="line">                <span class="comment">//则直接放在慢指针后面的元素，慢指针后移</span></span><br><span class="line">                nums[++slow] = nums[fast];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//慢指针加1，就是新数组符合的元素的个数</span></span><br><span class="line">        <span class="keyword">return</span> slow + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 
     </div>
 
@@ -342,9 +301,8 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/数据结构/" rel="tag"><i class="fa fa-google"></i> 数据结构</a>
-              <a href="/tags/线性结构/" rel="tag"><i class="fa fa-google"></i> 线性结构</a>
-              <a href="/tags/线性表/" rel="tag"><i class="fa fa-google"></i> 线性表</a>
+              <a href="/tags/LeetCode/" rel="tag"><i class="fa fa-google"></i> LeetCode</a>
+              <a href="/tags/双指针/" rel="tag"><i class="fa fa-google"></i> 双指针</a>
           </div>
 
         
@@ -353,13 +311,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2019/12/07/04-浅析数据结构-线性结构之线性表/" rel="prev" title="04-浅析数据结构-线性结构之线性表">
-      <i class="fa fa-chevron-left"></i> 04-浅析数据结构-线性结构之线性表
+    <a href="/2019/12/07/05-浅析数据结构-线性结构之线性表-链表/" rel="prev" title="05-浅析数据结构-线性结构之线性表_链表">
+      <i class="fa fa-chevron-left"></i> 05-浅析数据结构-线性结构之线性表_链表
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2019/12/11/LeetCode-01-26删除排序数组中的重复项/" rel="next" title="#LeetCode_01_26删除排序数组中的重复项">
-      #LeetCode_01_26删除排序数组中的重复项 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -397,7 +352,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#浅析数据结构-线性结构之线性表-链表"><span class="nav-number">1.</span> <span class="nav-text">浅析数据结构-线性结构之线性表-链表</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#b-链式存储-链表"><span class="nav-number">1.1.</span> <span class="nav-text">b.链式存储[链表]</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么需要使用头结点？"><span class="nav-number">1.1.1.</span> <span class="nav-text">为什么需要使用头结点？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如果希望通过一个函数对链表进行处理，我们至少需要哪些参数？"><span class="nav-number">1.1.2.</span> <span class="nav-text">如果希望通过一个函数对链表进行处理，我们至少需要哪些参数？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分类："><span class="nav-number">1.1.3.</span> <span class="nav-text">分类：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#插入结点："><span class="nav-number">1.1.4.</span> <span class="nav-text">插入结点：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除结点："><span class="nav-number">1.1.5.</span> <span class="nav-text">删除结点：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#链表的头插法："><span class="nav-number">1.1.6.</span> <span class="nav-text">链表的头插法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#链表的尾插法："><span class="nav-number">1.1.7.</span> <span class="nav-text">链表的尾插法：</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#LeetCode-26删除排序数组中的重复项"><span class="nav-number">1.</span> <span class="nav-text">LeetCode_26删除排序数组中的重复项</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#图示以及代码："><span class="nav-number">1.0.1.</span> <span class="nav-text">图示以及代码：</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

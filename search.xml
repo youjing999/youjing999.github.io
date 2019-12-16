@@ -34,8 +34,12 @@
 <h3 id="专题：递归"><a href="#专题：递归" class="headerlink" title="专题：递归"></a>专题：递归</h3><p>​    <strong>1、1 + 2 + 3 +…+ 100的和</strong></p>
 <p>​    <strong>2、求阶乘</strong></p>
 <p>​    <strong>3、汉诺塔</strong></p>
-<h3 id="模块四：非线性结构"><a href="#模块四：非线性结构" class="headerlink" title="模块四：非线性结构"></a>模块四：非线性结构</h3><p>​    <strong>1、树</strong></p>
-<p>​    <strong>2、图</strong></p>
+<p>​    <strong>4、迷宫</strong></p>
+<h3 id="模块四：非线性结构"><a href="#模块四：非线性结构" class="headerlink" title="模块四：非线性结构"></a>模块四：非线性结构</h3><p>​    <strong>1、二维数组</strong></p>
+<p>​    <strong>2、多维数组</strong></p>
+<p>​    <strong>3、广义表</strong></p>
+<p>​    <strong>4、树结构</strong></p>
+<p>​    <strong>5、图结构</strong></p>
 <h3 id="模块五：查找和排序"><a href="#模块五：查找和排序" class="headerlink" title="模块五：查找和排序"></a>模块五：查找和排序</h3><ul>
 <li><strong>查找：</strong></li>
 </ul>

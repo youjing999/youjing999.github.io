@@ -61,7 +61,7 @@
 <meta property="og:image" content="https://myresou.oss-cn-shanghai.aliyuncs.com/DataStruct/img/%E9%93%BE%E8%A1%A8/%E5%88%A0%E9%99%A4%E7%BB%93%E7%82%B9.png">
 <meta property="og:image" content="https://myresou.oss-cn-shanghai.aliyuncs.com/DataStruct/img/%E9%93%BE%E8%A1%A8/%E9%93%BE%E8%A1%A8%E5%A4%B4%E6%8F%92%E6%B3%95.png">
 <meta property="og:image" content="https://myresou.oss-cn-shanghai.aliyuncs.com/DataStruct/img/%E9%93%BE%E8%A1%A8/%E9%93%BE%E8%A1%A8%E5%B0%BE%E6%8F%92%E6%B3%95.png">
-<meta property="og:updated_time" content="2019-12-12T11:34:57.144Z">
+<meta property="og:updated_time" content="2020-01-08T05:14:59.387Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="05_浅析数据结构-线性结构之线性表_链表">
 <meta name="twitter:description" content="浅析数据结构-线性结构之线性表-链表">
@@ -246,7 +246,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-12-12 19:34:57" itemprop="dateModified" datetime="2019-12-12T19:34:57+08:00">2019-12-12</time>
+                <time title="修改时间：2020-01-08 13:14:59" itemprop="dateModified" datetime="2020-01-08T13:14:59+08:00">2020-01-08</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -333,7 +333,7 @@
 <p>直接写：p-&gt;pNext = p-&gt;pNext-&gt;pNext;是错误的，会造成内存泄漏。<br>r = p-&gt;pNext;p-&gt;pNext = p-&gt;pNext-&gt;pNext;free(r);</p>
 <h3 id="链表的头插法："><a href="#链表的头插法：" class="headerlink" title="链表的头插法："></a>链表的头插法：</h3><p>链表的头插法简单来说，就是每一个新结点都插入在最前端，即头结点之后。<br><img src="https://myresou.oss-cn-shanghai.aliyuncs.com/DataStruct/img/%E9%93%BE%E8%A1%A8/%E9%93%BE%E8%A1%A8%E5%A4%B4%E6%8F%92%E6%B3%95.png" alt="链表头插法"></p>
 <h3 id="链表的尾插法："><a href="#链表的尾插法：" class="headerlink" title="链表的尾插法："></a>链表的尾插法：</h3><p>链表的尾插法，新结点每次都插入在最后一个。<br><img src="https://myresou.oss-cn-shanghai.aliyuncs.com/DataStruct/img/%E9%93%BE%E8%A1%A8/%E9%93%BE%E8%A1%A8%E5%B0%BE%E6%8F%92%E6%B3%95.png" alt="链表尾插法"></p>
-
+<h2 id="链表的实现"><a href="#链表的实现" class="headerlink" title="链表的实现"></a>链表的实现</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
     </div>
 
     
@@ -397,7 +397,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#浅析数据结构-线性结构之线性表-链表"><span class="nav-number">1.</span> <span class="nav-text">浅析数据结构-线性结构之线性表-链表</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#b-链式存储-链表"><span class="nav-number">1.1.</span> <span class="nav-text">b.链式存储[链表]</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么需要使用头结点？"><span class="nav-number">1.1.1.</span> <span class="nav-text">为什么需要使用头结点？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如果希望通过一个函数对链表进行处理，我们至少需要哪些参数？"><span class="nav-number">1.1.2.</span> <span class="nav-text">如果希望通过一个函数对链表进行处理，我们至少需要哪些参数？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分类："><span class="nav-number">1.1.3.</span> <span class="nav-text">分类：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#插入结点："><span class="nav-number">1.1.4.</span> <span class="nav-text">插入结点：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除结点："><span class="nav-number">1.1.5.</span> <span class="nav-text">删除结点：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#链表的头插法："><span class="nav-number">1.1.6.</span> <span class="nav-text">链表的头插法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#链表的尾插法："><span class="nav-number">1.1.7.</span> <span class="nav-text">链表的尾插法：</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#浅析数据结构-线性结构之线性表-链表"><span class="nav-number">1.</span> <span class="nav-text">浅析数据结构-线性结构之线性表-链表</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#b-链式存储-链表"><span class="nav-number">1.1.</span> <span class="nav-text">b.链式存储[链表]</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么需要使用头结点？"><span class="nav-number">1.1.1.</span> <span class="nav-text">为什么需要使用头结点？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如果希望通过一个函数对链表进行处理，我们至少需要哪些参数？"><span class="nav-number">1.1.2.</span> <span class="nav-text">如果希望通过一个函数对链表进行处理，我们至少需要哪些参数？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分类："><span class="nav-number">1.1.3.</span> <span class="nav-text">分类：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#插入结点："><span class="nav-number">1.1.4.</span> <span class="nav-text">插入结点：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除结点："><span class="nav-number">1.1.5.</span> <span class="nav-text">删除结点：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#链表的头插法："><span class="nav-number">1.1.6.</span> <span class="nav-text">链表的头插法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#链表的尾插法："><span class="nav-number">1.1.7.</span> <span class="nav-text">链表的尾插法：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#链表的实现"><span class="nav-number">1.2.</span> <span class="nav-text">链表的实现</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -479,7 +479,7 @@
 <div class="copyright">
   
   &copy; 2019 11.24 – 
-  <span itemprop="copyrightYear">2019</span>
+  <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

@@ -271,7 +271,7 @@ https://myresou.oss-cn-shanghai.aliyuncs.com/DataStruct/img/arithmetic/Floyd%E7%
 <p>然后在在生成顺序表的时候，给<strong>ElemType *data</strong>赋值空间，类似于这么写：</p>
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//nLength为用户手动输入的有效元素的个数</span></span><br><span class="line">ElemType* data = (ElemType*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(ElemType) * nLength);</span><br></pre></td></tr></table></figure>
 
-<p>当然，这种写法书上确实没写，笔者也不确定这种写法的正确性，只是这么一说，感兴趣的读者可以试着思考一下。不再赘述。</p>
+<p>看过书的同学看到这就明白了，这种写法就是严奶奶书上的写法。暂时先不赘述。</p>
 ]]></content>
       <categories>
         <category>数据结构</category>
@@ -330,7 +330,7 @@ https://myresou.oss-cn-shanghai.aliyuncs.com/DataStruct/img/arithmetic/Floyd%E7%
 <p>直接写：p-&gt;pNext = p-&gt;pNext-&gt;pNext;是错误的，会造成内存泄漏。<br>r = p-&gt;pNext;p-&gt;pNext = p-&gt;pNext-&gt;pNext;free(r);</p>
 <h3 id="链表的头插法："><a href="#链表的头插法：" class="headerlink" title="链表的头插法："></a>链表的头插法：</h3><p>链表的头插法简单来说，就是每一个新结点都插入在最前端，即头结点之后。<br><img src="https://myresou.oss-cn-shanghai.aliyuncs.com/DataStruct/img/%E9%93%BE%E8%A1%A8/%E9%93%BE%E8%A1%A8%E5%A4%B4%E6%8F%92%E6%B3%95.png" alt="链表头插法"></p>
 <h3 id="链表的尾插法："><a href="#链表的尾插法：" class="headerlink" title="链表的尾插法："></a>链表的尾插法：</h3><p>链表的尾插法，新结点每次都插入在最后一个。<br><img src="https://myresou.oss-cn-shanghai.aliyuncs.com/DataStruct/img/%E9%93%BE%E8%A1%A8/%E9%93%BE%E8%A1%A8%E5%B0%BE%E6%8F%92%E6%B3%95.png" alt="链表尾插法"></p>
-]]></content>
+<h2 id="链表的实现"><a href="#链表的实现" class="headerlink" title="链表的实现"></a>链表的实现</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>数据结构</category>
         <category>线性结构</category>
